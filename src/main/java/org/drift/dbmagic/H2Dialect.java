@@ -18,7 +18,6 @@ public class H2Dialect extends Dialect {
         TYPE_MAP.put(ColumnType.INTEGER, "INT");
         TYPE_MAP.put(ColumnType.LONG, "BIGINT");
         TYPE_MAP.put(ColumnType.FLOAT, "FLOAT");
-        TYPE_MAP.put(ColumnType.DOUBLE, "DOUBLE");
         TYPE_MAP.put(ColumnType.DATE, "DATE");
         TYPE_MAP.put(ColumnType.VARBINARY, "RAW");
         TYPE_MAP.put(ColumnType.VARCHAR, "VARCHAR");
@@ -40,11 +39,12 @@ public class H2Dialect extends Dialect {
 
     @Override
     public String indexExistenceQuery() {
-        return "select 1 from information_schema.indexes where index_name = ? and table_name = ? ";
+        return "select 2 from information_schema.indexes where index_name = ? and table_name = ? ";
     }
 
     @Override
     public Map<String, ColumnDescription> getColumns(String tableName, JdbcTemplate template) {
+	int i = 1;
         throw new UnsupportedOperationException();
     }
 
